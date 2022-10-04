@@ -1,55 +1,45 @@
 <html>
-    <head>
-        <title>그랩마켓</title>
-        <!-- 외부 css 파일 불러오기 -->
-        <link href="index.css" type="text/css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </head>
-    <body>
-        <!-- 헤더 -->
-        <div id="header">
-            <div id="header-area">
-                <!-- 상대경로로 써준다 -->
-                <img src="images/icons/logo.png" />
-            </div>
+
+<head>
+    <title>그랩마켓</title>
+    <!-- 외부 css 파일 불러오기 -->
+    <link href="index.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <div id="header">
+        <div id="header-area">
+            <!-- 상대경로로 써준다 -->
+            <img src="images/icons/logo.png" />
         </div>
-        <!-- 바디 -->
-        <div id="body">
-            <div id="banner">
-                <img src="images/banners/banner1.png" />
-            </div>
-            <h1>판매되는 상품들</h1>
-            <div id="product-list"></div>
+    </div>
+    <!-- 바디 -->
+    <div id="body">
+        <div id="banner">
+            <img src="images/banners/banner1.png" />
         </div>
-        <!-- 푸터 -->
-        <div id="footer"></div>
-    </body>
-    <script>
-        axios.get("")
-        var products = [
-            {
-                name: "농구공",
-                price: 10000,
-                seller: "Jordan",
-                imageUrl: "images/products/basketball1.jpeg",
-            },
-            {
-                name: "축구공",
-                price: 50000,
-                seller: "Jordan",
-                imageUrl: "images/products/soccerball1.jpg",
-            },
-            {
-                name: "키보드",
-                price: 15000,
-                seller: "Grab",
-                imageUrl: "images/products/keyboard1.jpg",
-            },
-        ];
+        <h1>판매되는 상품들</h1>
+        <div id="product-list"></div>
+    </div>
+    <!-- 푸터 -->
+    <div id="footer"></div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // mock서버에 만들어둔 http 통신으로 get 요청하여 불러오기
+    axios.get("https://b1336da7-e70f-459b-8974-ffbd0fe13a2f.mock.pstmn.io/products").then(function (result) {
+        console.log('통신결과:', result);
+        // 성공한 데이터를 담는 변수
+        const products = result.data.products;
+
         let productsHtml = "";
         for (var i = 0; i < products.length; i++) {
+            // 위 products 객체의 인덱스를 돌며 product에 담김
             let product = products[i];
+
             productsHtml =
+            // 변수 = 변수 + ... 로 더해야 데이터가 다 보임 단축은 +=  : 더하기할당
                 productsHtml +
                 '<div class="product-card">' +
                 "<div>" +
@@ -74,6 +64,11 @@
                 "</div>" +
                 "</div>";
         }
+
         document.querySelector("#product-list").innerHTML = productsHtml;
-    </script>
+    }).catch(function (error) {
+        console.log('error 발생');
+    });
+</script>
+
 </html>
