@@ -1,37 +1,18 @@
-/* 기본적으로 body태그에는 margin이 들어감
-그러므로 전역설정으로 세팅해준다. */
+/* *선택자는 모든 태그를 선택함
+모든 태그의 기본적으로 적용되는 
+margin, padding을 0으로 전역설정해줌 */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* ------헤더 ------- */
 #header {
   height: 64px;
   /* 가운데 정렬 flex, justify-content:center */
   display: flex;
   justify-content: center;
   border-bottom: 1px solid gray;
-}
-
-
-#body {
-  /* 바디 영역은 100% 차지 */
-  height: 100%;
-  width: 1024px;
-
-  /* 자식이 부모를 기준으로 가운데 정렬 */
-  margin: 0 auto;
-  padding-bottom: 24px;
-}
-
-#footer {
-  height: 200px;
-  background-color: red;
-}
-
-#banner {
-  height: 300px;
-  background-color: yellow;
 }
 
 #header-area {
@@ -48,9 +29,25 @@
   height: 36px;
 }
 
-#banner > img {
-  width: 100%;
+/* ------바디 ------- */
+#body {
+  /* 바디 영역은 100% 차지 */
+  height: 100%;
+  width: 1024px;
+
+  /* 자식이 부모를 기준으로 가운데 정렬 */
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+
+#banner {
   height: 300px;
+  background-color: yellow;
+}
+
+#banner > img {
+  /* width 100%로 하면 height자동으로 맞춰짐 */
+  width: 100%;
 }
 
 #body > h1 {
@@ -58,7 +55,9 @@
 }
 
 #product-list {
+  /* 수평정렬을 위해 flex사용 */
   display: flex;
+  /* 부모 안에서 자식들의 width를 유지한채로 줄바꿈가능하게함 */
   flex-wrap: wrap;
   margin-top: 12px;
 }
@@ -70,6 +69,7 @@
   margin-bottom: 12px;
   border: 1px solid rgb(230, 230, 230);
   border-radius: 12px;
+  /* 이미지가 넘어가는 부분은 가리기 */
   overflow: hidden;
 }
 
@@ -79,6 +79,7 @@
 }
 
 .product-contents {
+   /* 인라인 수직정렬 flex-direction: column */
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -95,11 +96,19 @@
 }
 
 .product-seller {
+  /* 수평정렬하기 위해 */
   display: flex;
+  /* 수직방향의 가운데 정렬 */
   align-items: center;
   margin-top: 12px;
 }
 
 .product-avatar {
   width: 24px;
+}
+
+/* ------푸터 ------- */
+#footer {
+  height: 200px;
+  background-color: red;
 }
