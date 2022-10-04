@@ -1,3 +1,5 @@
+/* 기본적으로 body태그에는 margin이 들어감
+그러므로 전역설정으로 세팅해준다. */
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +7,19 @@
 
 #header {
   height: 64px;
+  /* 가운데 정렬 flex, justify-content:center */
   display: flex;
   justify-content: center;
   border-bottom: 1px solid gray;
 }
 
+
 #body {
+  /* 바디 영역은 100% 차지 */
   height: 100%;
   width: 1024px;
+
+  /* 자식이 부모를 기준으로 가운데 정렬 */
   margin: 0 auto;
   padding-bottom: 24px;
 }
@@ -29,11 +36,13 @@
 
 #header-area {
   width: 1024px;
+  /* 부모의 높이를 100%받는다 */
   height: 100%;
   display: flex;
   align-items: center;
 }
 
+/* 상위 선택자로 img에게 id를 주지않음 */
 #header-area > img {
   width: 128px;
   height: 36px;
